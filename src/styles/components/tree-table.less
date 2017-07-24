@@ -1,0 +1,78 @@
+@treetable-prefix-cls: ~"@{css-prefix}tree-table";
+
+.@{treetable-prefix-cls} {
+    &-wrapper{
+        position: relative;
+        overflow-y: auto;
+    }
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    color: @text-color;
+    font-size: @font-size-small;
+    background-color: #fff;
+    border-collapse: collapse;
+
+    tr {
+        border-bottom: 1px solid #eef1f9;
+
+        td {
+            height: 40px; 
+            line-height: 40px;
+        }
+
+        &:hover {
+            td {
+                background-color: @table-td-hover-bg;
+            }
+        }
+    }
+
+    &-node {
+        >span {
+            position: absolute; 
+            cursor: pointer;
+
+            i {
+                font-size: 18px;
+            }
+
+            .sign-vertical {
+                position: absolute; 
+                left: 8px; 
+                top: 15px; 
+                height: 7px; 
+                border-right: 1px solid #fff;
+            }
+
+            .sign-horizontal {
+                position: absolute; 
+                left: 5px; 
+                top: 18px; 
+                width: 7px; 
+                border-bottom: 1px solid #fff;
+            }
+        }
+    }
+
+    &-operate {
+        text-align: right;
+
+        >span {
+            margin-right: 20px; cursor: pointer; display: none;
+
+            &:hover {
+                color: @primary-color;
+            }
+
+            &.disabled {
+                color: #b1b9c6!important;
+                cursor: not-allowed;
+            }
+        }
+
+        &.active>span {
+            display: inline;
+        }
+    }
+}

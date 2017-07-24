@@ -1,0 +1,75 @@
+@fmodal-prefix-cls: ~"@{css-prefix}fmodal";
+
+.@{fmodal-prefix-cls} {
+    width: auto;
+    margin: 0 auto;
+    position: relative;
+    outline: none;
+    top: 100px;
+    -webkit-box-shadow: 0 1px 6px rgba(0,0,0,.2); 
+    box-shadow: 0 1px 6px rgba(0,0,0,.2);
+    padding: 20px 30px;
+    background-color: #fff;
+
+    &-hidden {
+        display: none !important;
+    }
+
+    &-wrap {
+        position: fixed;
+        overflow: auto;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: @zindex-modal;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+    }
+
+    &-wrap * {
+        box-sizing: border-box;
+        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    &-mask {
+        .mask-transparent;
+    }
+
+    &-content {
+        position: relative;
+        border: 0;
+        border-radius: @border-radius-base;
+        background-clip: padding-box;
+    }
+
+    &-header {
+        font-size: 16px; 
+    }
+
+    &-body {
+        font-size: 12px;
+        line-height: 1.5;
+        margin: 20px 0;
+    }
+
+    &-footer {
+        padding-top: 10px;
+        button {
+            margin-right: 8px;
+            margin-bottom: 0;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .@{fmodal-prefix-cls} {
+        width: auto !important;
+        margin: 10px;
+    }
+    .vertical-center-modal {
+        .@{fmodal-prefix-cls} {
+            flex: 1;
+        }
+    }
+}
