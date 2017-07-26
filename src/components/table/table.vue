@@ -94,6 +94,9 @@
 
     const prefixCls = 'fv-table';
 
+    let rowKey = 1;
+    let columnKey = 1;
+
     export default {
         name: 'iTable',
         mixins: [ Locale ],
@@ -530,7 +533,10 @@
             },
             makeData () {
                 let data = deepCopy(this.data);
-                data.forEach((row, index) => row._index = index);
+                data.forEach((row, index) => {
+                    row._index = index;
+                    row._rowKey = rowKey++;
+                });
                 return data;
             },
             makeDataWithSort () {
@@ -592,6 +598,7 @@
 
                 columns.forEach((column, index) => {
                     column._index = index;
+                    column._columnKey = columnKey++;
                     column._width = column.width ? column.width : '';    // update in handleResize()
                     column._sortType = 'normal';
                     column._filterVisible = false;

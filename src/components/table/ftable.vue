@@ -86,7 +86,7 @@
             <transition :name="operation.slide">
                 <!-- <i-drop v-show="operation.opened" ref="drop" :style="dropStyle"><slot name="operation"></slot></i-drop> -->
                 <i-drop v-show="operation.opened" ref="drop" :style="dropStyle">
-                    <f-operation-item v-for="item in operations" :key="item" :value="item.value" v-if="data[operation.index]&&data[operation.index]['op-'+item.value]"><f-icon :type="item.icon"></f-icon> {{ item.text }}</f-operation-item>
+                    <f-operation-item v-for="item in operations" :key="item.value" :value="item.value" v-if="data[operation.index]&&data[operation.index]['op-'+item.value]"><f-icon :type="item.icon"></f-icon> {{ item.text }}</f-operation-item>
                 </i-drop>
             </transition>
         </div>

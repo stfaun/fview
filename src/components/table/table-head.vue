@@ -26,7 +26,7 @@
                                 <div slot="content" :class="[prefixCls + '-filter-list']" v-if="column._filterMultiple">
                                     <div :class="[prefixCls + '-filter-list-item']">
                                         <i-checkbox-group v-model="column._filterChecked">
-                                            <i-checkbox v-for="item in column.filters" :key="item" :label="item.value">{{ item.label }}</i-checkbox>
+                                            <i-checkbox v-for="item in column.filters" :key="item._columnKey" :label="item.value">{{ item.label }}</i-checkbox>
                                         </i-checkbox-group>
                                     </div>
                                     <div :class="[prefixCls + '-filter-footer']">

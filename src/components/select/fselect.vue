@@ -28,7 +28,7 @@
             <f-drop v-show="visible" :placement="placement" ref="dropdown">
                 <ul :class="[prefixCls + '-dropdown-list']" ref="options">
                     <!-- <slot></slot> -->
-                    <f-option v-for="item in model" :key="item" :value="item">{{ item }}</f-option>
+                    <f-option v-for="item in model" :key="item.value" :value="item">{{ item }}</f-option>
                     <f-option ref="query" :value="query" query :list="model">{{ query }}</f-option>
                 </ul>
             </f-drop>

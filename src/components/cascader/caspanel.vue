@@ -3,7 +3,7 @@
         <ul v-if="data && data.length" :class="[prefixCls + '-menu']">
             <i-casitem
                 v-for="item in data"
-                :key="item"
+                :key="item.value"
                 :prefix-cls="prefixCls"
                 :data="item"
                 :tmp-item="tmpItem"
