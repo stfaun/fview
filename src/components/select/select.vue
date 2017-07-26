@@ -521,12 +521,16 @@
             this.$on('append', () => {
                 this.modelToQuery();
                 this.slotChange();
-                this.updateOptions(true, true);
+                this.$nextTick(() => {
+                    this.updateOptions(true, true);
+                });
             });
             this.$on('remove', () => {
                 this.modelToQuery();
                 this.slotChange();
-                this.updateOptions(true, true);
+                this.$nextTick(() => {
+                    this.updateOptions(true, true);
+                });
             });
 
             this.$on('on-select-selected', (value) => {
