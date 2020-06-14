@@ -10,6 +10,11 @@
                 <i-icon type="more" :disabled="disabled" style="cursor:pointer" v-if="!column.icon"></i-icon>
             </div>
         </template>
+        <template v-if="renderType === 'action'">
+            <div>
+                <a v-for="item in operations" v-if="row['op-'+item.value]" href="javascript:;" class="operate-btn" @click.prevent="$parent.$parent.$emit(item.value,row)"><f-icon :type="item.icon"></f-icon> {{ item.text }}</a>
+            </div>
+        </template>
         <template v-if="renderType === 'normal'"><span v-html="row[column.key]"></span></template>
     </div>
 </template>
@@ -17,11 +22,12 @@
     import Vue from 'vue';
     import iCheckbox from '../checkbox/checkbox.vue';
     import iIcon from '../icon/icon.vue';
+    import fIcon from '../icon/ficon.vue';
     import { getStyle } from '../../utils/assist';
 
     export default {
         name: 'iTableCell',
-        components: { iCheckbox, iIcon },
+        components: { iCheckbox, iIcon, fIcon },
         props: {
             prefixCls: String,
             row: Object,
@@ -39,7 +45,8 @@
             return {
                 renderType: '',
                 uid: -1,
-                context: this.$parent.$parent.currentContext
+                context: this.$parent.$parent.currentContext,
+                operations: this.$parent.$parent.operations
             };
         },
         computed: {
@@ -93,6 +100,8 @@
                 this.renderType = 'selection';
             } else if (this.column.type === 'operation') {
                 this.renderType = 'operation';
+            } else if (this.column.type === 'action') {
+                this.renderType = 'action';
             } else if (this.column.render) {
                 this.renderType = 'render';
             } else {

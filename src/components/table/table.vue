@@ -114,6 +114,12 @@
                     return [];
                 }
             },
+            operations: {
+                type: Array,
+                default () {
+                    return [];
+                }
+            },
             size: {
                 validator (value) {
                     return oneOf(value, ['small', 'large', 'default']);
